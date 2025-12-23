@@ -1,0 +1,88 @@
+/* Yahoo-like mobile theme overrides */
+:root {
+  --bg-primary: #f5f7fb; /* page background */
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f0f3f8;
+  --bg-elevated: #ffffff;
+
+  --text-primary: #0b2340; /* deep navy text */
+  --text-secondary: #5b6b7a;
+  --text-tertiary: #7b8897;
+
+  --accent-purple: #0f5bb5; /* primary blue */
+  --accent-blue: #0f5bb5;
+  --accent-green: #21c07a;
+  --accent-red: #ff5c5c;
+
+  --success: #21c07a;
+  --danger: #ff5c5c;
+
+  --shadow-sm: 0 1px 4px rgba(16,24,40,0.06);
+  --shadow-md: 0 6px 18px rgba(16,24,40,0.08);
+
+  --radius-md: 12px;
+  --radius-lg: 14px;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Header becomes compact and navy */
+.header {
+  background: linear-gradient(180deg,#0b3b6f 0%, #0a355f 100%);
+  color: #fff;
+  border-bottom: none;
+}
+
+.page-title { color: #fff; }
+
+.search-bar { background: rgba(255,255,255,0.06); border: none; }
+
+/* Cards: white surfaces with subtle shadow */
+.summary-card,
+.watchlist-container,
+.chart-container,
+.holdings-container,
+.news-container {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid rgba(11,35,64,0.04);
+  box-shadow: var(--shadow-sm);
+}
+
+.card-value { background: none; -webkit-text-fill-color: unset; color: var(--text-primary); }
+.card-label { color: var(--text-secondary); }
+.card-change.positive { color: var(--success); }
+.card-change.negative { color: var(--danger); }
+
+/* Watchlist compact, similar to Yahoo mobile */
+.watchlist-item { padding: 12px 14px; border-radius: 10px; background: #fff; }
+.watchlist-price { color: var(--text-primary); }
+
+/* Bottom navigation bar (mobile) */
+.bottom-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 58px;
+  background: #ffffff;
+  border-top: 1px solid rgba(11,35,64,0.06);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 2000;
+  box-shadow: 0 -6px 18px rgba(16,24,40,0.04);
+}
+
+.bottom-nav a { text-decoration: none; color: var(--text-secondary); font-size: 12px; display:flex; flex-direction:column; align-items:center; gap:4px; }
+.bottom-nav a.active { color: var(--accent-blue); }
+
+/* Adjust main content padding for bottom nav */
+.content-area { padding-bottom: 88px; }
+
+@media (min-width: 1025px) {
+  .bottom-nav { display: none; }
+}
