@@ -1,0 +1,11 @@
+sh start-local.sh
+
+🌐 Accede a la aplicación:
+   Frontend:  http://localhost:8080
+   Backend:   http://localhost:3000/health
+   Database:  localhost:5432
+
+📋 Comandos útiles:
+   Ver logs:        docker-compose logs -f
+   Detener:         docker-compose down
+   Reiniciar:       docker-compose restart
