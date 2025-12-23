@@ -1,0 +1,60 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  backend-tests:
+    name: Backend tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install backend dependencies
+        working-directory: backend
+        run: |
+          npm ci --silent
+
+      - name: Run backend tests
+        working-directory: backend
+        run: |
+          npm test
+
+  frontend-check:
+    name: Frontend headless check
+    runs-on: ubuntu-latest
+    needs: backend-tests
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install root dependencies
+        run: |
+          npm ci --silent
+
+      - name: Start static server
+        run: |
+          # Use Python static server on port 8080
+          python3 -m http.server 8080 &
+          # wait for server to be ready
+          for i in `seq 1 10`; do
+            curl -sSf http://localhost:8080 && break || sleep 1
+          done
+
+      - name: Run frontend headless check
+        env:
+          CI: true
+        run: |
+          node tools/check_frontend.js

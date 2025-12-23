@@ -4,6 +4,7 @@ Una aplicación web completa y moderna para la gestión de inversiones, seguimie
 
 ![Stoxy Dashboard](https://img.shields.io/badge/Version-1.0.0-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
+[![CI](https://github.com/franlpz1969/stoxy/actions/workflows/ci.yml/badge.svg)](https://github.com/franlpz1969/stoxy/actions/workflows/ci.yml)
 
 ## ✨ Características Principales
 
@@ -388,3 +389,15 @@ Para preguntas o sugerencias, abre un issue en el repositorio.
 **Hecho con ❤️ para inversores modernos**
 
 *Nota: Esta aplicación usa datos simulados. Para trading real, consulta con un asesor financiero profesional.*
+
+## CI (GitHub Actions)
+
+Este repositorio incluye una acción de GitHub que ejecuta los tests del backend en cada `push` y `pull_request` sobre `main`.
+
+Archivo: `.github/workflows/ci.yml`
+
+Qué hace:
+- Instala dependencias del backend
+- Ejecuta `npm test` en el directorio `backend`
+
+Puedes personalizar el workflow en `.github/workflows/ci.yml`.
