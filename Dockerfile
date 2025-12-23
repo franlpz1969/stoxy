@@ -11,6 +11,8 @@ COPY calculator.js /usr/share/nginx/html/
 COPY storage.js /usr/share/nginx/html/
 COPY api-client.js /usr/share/nginx/html/
 COPY enhancements.js /usr/share/nginx/html/
+COPY favicon.ico /usr/share/nginx/html/
+COPY themes /usr/share/nginx/html/themes/
 
 # Copiar configuración de nginx
 COPY nginx.conf /etc/nginx/conf.d/default.conf
